@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>ESISA</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/style01.css}" rel="stylesheet">
+	</head>
+	<body>
+		<header th:insert="fragments/Nav :: header"></header>
+		<div class="container">
+			<div class="container border spacing">
+				<form class="text-center border border-light p-5" th:action="@{/controller/login}" method="post">
+					<p class="h4 mb-4">Sign in</p>
+				   	<div class="form-group">
+						<input class="form-control" type="text" placeholder="CIN" name="cin" id="cin"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" placeholder="CODE MASSAR" name="massarCode" id="cin"/>
+					</div>
+				    <button class="btn btn-info" type="submit">Sign in</button>
+					<div th:if="${message != null}" class="alert alert-danger" role="alert" style="margin-top: 10px;">
+						<p th:text="${message}"></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

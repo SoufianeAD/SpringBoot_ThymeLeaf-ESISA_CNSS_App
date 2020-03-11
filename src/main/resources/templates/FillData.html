@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>ESISA</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link th:href="@{/css/style01.css}" rel="stylesheet">
+	</head>
+	<body>
+		<header th:insert="fragments/Nav :: header"></header>
+		<div class="container">
+			<div class="container border" style="width: 80%; margin-top: 3%;">
+				<p class="h4 mb-4 text-center mt-3 mb-3">Informations</p>
+				<!-- data -->
+				<div class="mt-3 container">
+					<table class="table table-striped">
+						<tr>
+							<td class="font-weight-bold">CIN</td>
+							<td th:text="${student.cin}"></td>
+						</tr>
+						<tr>
+							<td class="font-weight-bold">CNE</td>
+							<td th:text="${student.cne}"></td>
+						</tr>
+						<tr>
+							<td class="font-weight-bold">Nom</td>
+							<td th:text="${student.nom}"></td>
+						</tr>
+						<tr>
+							<td class="font-weight-bold">Prénom</td>
+							<td th:text="${student.prenom}"></td>
+						</tr>
+						<tr>
+							<td class="font-weight-bold">Date de naissance</td>
+							<td th:text="${student.DateNaissance}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="container border mb-3" style="width: 80%; margin-top: 3%;">
+				<!-- Form -->
+				<form class="text-center border-light p-5" th:object="${student}" th:action="@{/controller/fillData/{cin}(cin=${student.cin})}" method="post" >
+					<p class="h4 mb-4">Saisissez vos informations</p>
+				   	<div class="container">
+				   		<!-- cin -->
+				   		<div class="row">
+				   			<div class="col">
+				   				<div class="form-group">
+									<input class="form-control" type="text" placeholder="CIN du Père" name="cinPere" th:field="*{cinPere}"/>
+								</div>
+				   			</div>
+				   			<div class="col">
+				   				<div class="form-group">
+									<input class="form-control" type="text" placeholder="CIN de la Mère" name="cinMere" th:field="*{cinMere}"/>
+								</div>
+				   			</div>
+				   		</div>
+				   		<!-- nom -->
+				   		<div class="row">
+				   			<div class="col">
+				   				<div class="form-group">
+									<input class="form-control" type="text" placeholder="Nom du Père" name="nomPere" th:field="*{nomPere}"/>
+								</div>
+				   			</div>
+				   			<div class="col">
+				   				<div class="form-group">
+									<input class="form-control" type="text" placeholder="Nom de la Mère" name="nomMere" th:field="*{nomMere}"/>
+								</div>
+				   			</div>
+				   		</div>
+				   		<!-- prenom -->
+				   		<div class="row">
+				   			<div class="col">
+				   				<div class="form-group">
+									<input class="form-control" type="text" placeholder="Prénom du Père" name="prenomPere" th:field="*{prenomPere}"/>
+								</div>
+				   			</div>
+				   			<div class="col">
+				   				<div class="form-group">
+									<input class="form-control" type="text" placeholder="Prénom de la Mère" name="prenomMere" th:field="*{prenomMere}"/>
+								</div>
+				   			</div>
+				   		</div>
+				   	</div>
+				    <button class="btn btn-info" type="submit" onclick="alert('Merci!')">Valider</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
