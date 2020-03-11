@@ -13,11 +13,13 @@ import com.spring.main.models.Student;
 
 @org.springframework.stereotype.Service
 public class Service {
+	
+	private String source = "./src/main/resources/data/StudentsData.xlsx";
 
 	public Student login(String cin, String massarCode) {
 		Student student = null;
 		try {
-			File file = new File("./src/main/resources/data/StudentsData.xlsx");
+			File file = new File(source);
 			FileInputStream inputStream = new FileInputStream(file);
 			Workbook workbook = new XSSFWorkbook(inputStream);
 			Sheet sheet = workbook.getSheetAt(0);
@@ -43,7 +45,7 @@ public class Service {
 	public Student getStudentRow(String cin) {
 		Student student = null;
 		try {
-			File file = new File("./src/main/resources/data/StudentsData.xlsx");
+			File file = new File(source);
 			FileInputStream inputStream = new FileInputStream(file);
 			Workbook workbook = new XSSFWorkbook(inputStream);
 			Sheet sheet = workbook.getSheetAt(0);
@@ -73,7 +75,7 @@ public class Service {
 	
 	public void setStudentRow(Student student) {
 		try {
-			File file = new File("./src/main/resources/data/StudentsData.xlsx");
+			File file = new File(source);
 			FileInputStream inputStream = new FileInputStream(file);
 			Workbook workbook = new XSSFWorkbook(inputStream);
 			Sheet sheet = workbook.getSheetAt(0);
@@ -91,6 +93,7 @@ public class Service {
 					row.getCell(3).setCellValue(student.getCinMere());
 					row.getCell(4).setCellValue(student.getNomMere());
 					row.getCell(5).setCellValue(student.getPrenomMere());
+					row.getCell(13).setCellValue(student.getCouvertureCNSS());
 				}
 			}
 			inputStream.close();

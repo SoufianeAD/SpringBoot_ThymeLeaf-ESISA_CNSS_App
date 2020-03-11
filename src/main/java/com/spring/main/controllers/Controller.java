@@ -47,6 +47,7 @@ public class Controller {
 	@PostMapping("/fillData/{cin}")
 	public String fillData(@ModelAttribute("student") Student student, @PathVariable("cin") String cin, HttpServletResponse response) {
 		student.setCin(cin);
+		System.err.println("Couverture CNSS : " + student.getCouvertureCNSS());
 		service.setStudentRow(student);
 		return "index";
 	}

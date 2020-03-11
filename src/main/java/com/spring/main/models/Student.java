@@ -15,6 +15,8 @@ public class Student {
 	private String nomMere;
 	private String prenomMere;
 	
+	private String couvertureCNSS;
+	
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
@@ -105,6 +107,14 @@ public class Student {
 
 	public void setPrenomMere(String prenomMere) {
 		this.prenomMere = prenomMere;
+	}
+
+	public String getCouvertureCNSS() {
+		return couvertureCNSS;
+	}
+
+	public void setCouvertureCNSS(String couvertureCNSS) {
+		this.couvertureCNSS = couvertureCNSS;
 	}
 
 	@Override
